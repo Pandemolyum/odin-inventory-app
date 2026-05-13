@@ -9,6 +9,8 @@ CREATE TABLE IF NOT EXISTS Products (
   product_name VARCHAR ( 255 ) NOT NULL,
   product_brand VARCHAR ( 127 ),
   category VARCHAR ( 127 ),
+  quantity DECIMAL ( 10, 2 ),
+  unit_type VARCHAR ( 20 ),
   description TEXT
 );
 
@@ -28,6 +30,19 @@ CREATE TABLE IF NOT EXISTS PriceHistory (
   price DECIMAL ( 10, 2 ) NOT NULL,
   valid_from TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   valid_to TIMESTAMP
+);
+
+CREATE TABLE Recipes (
+    recipe_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    recipe_name VARCHAR( 255 ) NOT NULL,
+    instructions TEXT
+);
+
+CREATE TABLE RecipeIngredients (
+    recipe_id INT REFERENCES Recipes(recipe_id),
+    product_id INT REFERENCES Products(product_id),
+    quantity DECIMAL( 10, 2 ) NOT NULL,
+    PRIMARY KEY ( recipe_id, product_id )
 );
 
 INSERT INTO Products (product_name, product_brand, category) 

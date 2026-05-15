@@ -18,9 +18,8 @@ const __dirname = dirname(__filename);
 app.set("views", path.join(__dirname, "views"));
 app.set("view_engine", "ejs");
 
-// Allows Express app to parse requests that contain URL-encoded data and
-// convert them to a JavaScript object accessible via "req.body"
-// "extended: true" allows parsing nested objects and arrays, similar to a JSON style
+// Parses requests that contain URL-encoded data and
+// converts them to a JavaScript object accessible via "req.body"
 app.use(express.urlencoded({ extended: true }));
 
 // Routes

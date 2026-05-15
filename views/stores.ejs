@@ -11,41 +11,60 @@
 <body>
     <%- include("partials/header.ejs") %>
 
-    <div class="table-container">
-        <h2>Stores</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Store Name</th>
-                    <th>Brand</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% if (stores && stores.length > 0) { %>
-                <% stores.forEach(store => { %>
-                <tr>
-                    <td><strong><%= store.store_name %></strong></td>
-                    <td>
-                        <span class="brand-badge">
-                            <%= store.store_brand || 'N/A' %>
-                        </span>
-                    </td>
-                    <td><%= store.address %></td>
-                    <td><%= store.city %></td>
-                    <td><%= store.country %></td>
-                </tr>
-                <% }); %>
-                <% } else { %>
-                <tr>
-                    <td colspan="5" style="text-align: center; color: #b2bec3;">No stores found.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
+    <main class="main-content">
+        <div class="table-header">
+            <h2 style="margin: 0;">Store Directory</h2>
+            <!-- CREATE BUTTON -->
+            <a href="/stores/new" class="btn btn-create">
+                + Add New Store
+            </a>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Store Name</th>
+                        <th>Brand</th>
+                        <th>Location</th>
+                        <th style="text-align: right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (stores && stores.length > 0) { %>
+                    <% stores.forEach(store => { %>
+                    <tr>
+                        <td><strong><%= store.store_name %></strong></td>
+                        <td><span class="brand-badge"><%= store.store_brand || 'General' %></span></td>
+                        <td>
+                            <div style="color: #636e72; font-size: 0.85rem;"><%= store.address %></div>
+                            <div style="font-size: 0.8rem; color: #b2bec3;"><%= store.city %>, <%= store.country %>
+                            </div>
+                        </td>
+                        <td class="actions-cell">
+                            <!-- UPDATE BUTTON -->
+                            <a href="/stores/edit/<%= store.store_id %>" class="btn btn-edit" title="Edit Store">
+                                Edit
+                            </a>
+                            <!-- DELETE BUTTON -->
+                            <form action="/stores/delete/<%= store.store_id %>?_method=DELETE" method="POST"
+                                style="display:inline;">
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure?')">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+                    <% } else { %>
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 40px; color: #b2bec3;">No stores found.</td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 
 </html>

@@ -2,8 +2,10 @@
     --bg-color: #f9f9fb;
     --text-main: #2d3436;
     --accent: #6c5ce7;
+    --accent-hover: #5649c1;
     --border-color: #dfe6e9;
-    --header-bg: #ffffff;
+    --danger: #ff7675;
+    --warning: #fab1a0;
 }
 
 body {
@@ -12,114 +14,134 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
-    padding: 0;
 }
 
-/* --- Header Styles --- */
+/* --- Header --- */
 header {
-    background-color: var(--header-bg);
+    background: white;
     border-bottom: 1px solid var(--border-color);
     padding: 0 40px;
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
 .logo {
-    font-size: 1.25rem;
     font-weight: 800;
-    color: var(--text-main);
     text-decoration: none;
-    letter-spacing: -0.5px;
+    color: var(--text-main);
 }
-
 nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-    gap: 30px;
+    gap: 25px;
+    margin: 0;
 }
-
 nav a {
     text-decoration: none;
     color: #636e72;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: color 0.2s ease;
 }
 
-nav a:hover {
-    color: var(--accent);
-}
-
-/* --- Table Container Styles --- */
+/* --- Layout --- */
 .main-content {
-    display: flex;
-    justify-content: center;
-    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
 }
 
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* --- Buttons --- */
+.btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-create {
+    background-color: var(--accent);
+    color: white;
+}
+
+.btn-create:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-edit {
+    background-color: transparent;
+    color: #e67e22;
+    padding: 4px 8px;
+}
+
+.btn-edit:hover {
+    background-color: #fff5e6;
+}
+
+.btn-delete {
+    background-color: transparent;
+    color: var(--danger);
+    padding: 4px 8px;
+}
+
+.btn-delete:hover {
+    background-color: #fff0f0;
+}
+
+/* --- Table --- */
 .table-container {
-    width: 100%;
-    max-width: 1000px;
     background: white;
-    padding: 30px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-}
-
-h2 {
-    font-weight: 600;
-    margin-bottom: 24px;
-    font-size: 1.5rem;
-    color: var(--text-main);
+    overflow: hidden;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
 }
-
 th {
-    padding: 12px 15px;
-    font-size: 0.75rem;
+    background: #fcfcff;
+    padding: 15px;
+    text-align: left;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: #b2bec3;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 td {
-    padding: 18px 15px;
+    padding: 16px 15px;
     border-bottom: 1px solid var(--border-color);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
-tr:last-child td {
-    border-bottom: none;
-}
-
-tr:hover {
-    background-color: #fcfcff;
+.actions-cell {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
 }
 
 .brand-badge {
     background: #f1f0ff;
     color: var(--accent);
-    padding: 4px 10px;
+    padding: 3px 10px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
-    white-space: nowrap;
-}
-
-.store-name {
-    font-weight: 600;
-    color: var(--text-main);
 }

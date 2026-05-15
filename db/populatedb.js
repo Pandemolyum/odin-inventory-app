@@ -54,7 +54,7 @@ VALUES
 INSERT INTO Stores (store_name, store_brand, city, country) 
 VALUES
   ('Super C - Jarry', 'Super C', 'Montreal', 'Canada'),
-  ('Maxi - Jean-Talon', 'Maxi', 'Montrea', 'Canada'),
+  ('Maxi - Jean-Talon', 'Maxi', 'Montreal', 'Canada'),
   ('IGA - St-Zotique', 'IGA', 'Montreal', 'Canada');
 `;
 

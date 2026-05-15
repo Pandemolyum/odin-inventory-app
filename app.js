@@ -15,6 +15,10 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Set assets path (styles)
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
+
 // Set views engine
 app.set("views", path.join(__dirname, "views"));
 app.set("view_engine", "ejs");

@@ -1,6 +1,7 @@
 import express from "express";
 import path from "node:path";
 import indexRouter from "./routes/indexRouter.js";
+import storesRouter from "./routes/storesRouter.js";
 import config from "./config.js";
 global.config = config;
 
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/", indexRouter);
+app.use("/stores", storesRouter);
 
 // Listen for requests
 app.listen(config.PORT_NODE, (error) => {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stores</title>
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <div class="table-container">
+        <h2>Stores</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Store Name</th>
+                    <th>Brand</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (stores && stores.length > 0) { %>
+                <% stores.forEach(store => { %>
+                <tr>
+                    <td><strong><%= store.store_name %></strong></td>
+                    <td>
+                        <span class="brand-badge">
+                            <%= store.store_brand || 'N/A' %>
+                        </span>
+                    </td>
+                    <td><%= store.address %></td>
+                    <td><%= store.city %></td>
+                    <td><%= store.country %></td>
+                </tr>
+                <% }); %>
+                <% } else { %>
+                <tr>
+                    <td colspan="5" style="text-align: center; color: #b2bec3;">No stores found.</td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
